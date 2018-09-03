@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+
+using namespace std;
+
+int compare (const void * a, const void * b)
+{
+  return ( *(int*)a - *(int*)b );
+}
+
+int main(){
+	int n,m;
+	while(scanf("%d", &n) != EOF){
+		while(n--){
+			cin >> m;
+			int DN[m];
+			for (int i=0;i<m;i++)	cin >> DN[i];
+			qsort(DN,m,sizeof(int),compare);
+			int total_d=0;
+			for (int i=0;i<m;i++){
+				if (i == m/2) continue;
+				else total_d += abs(DN[m/2] - DN[i]);
+			}
+			cout << total_d << endl;
+		}
+	}
+	return 0;
+}
