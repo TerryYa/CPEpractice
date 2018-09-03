@@ -1,0 +1,14 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <stack>
+
+using namespace std;
+
+int main(){
+	long long int n,m;
+	while(scanf("%lld%lld",&n,&m)!=EOF){
+		printf("%lld",abs(n-m));
+	}
+	return 0;
+}
