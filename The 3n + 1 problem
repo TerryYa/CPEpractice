@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+
+using namespace std;
+
+int circle(int n){
+	int count=0;
+	while(n>1){
+		if (n%2) n = 3 * n + 1;
+		else n /= 2;
+		count ++;
+	}
+	return count;
+}
+
+int main(){
+	int n,m;
+	while(scanf("%d%d", &n, &m) != EOF){
+		cout << n << " " << m ;
+		int maxc=0,cle;
+		for (int i=min(n,m);i<=max(n,m);i++){
+			cle = circle(i);
+			maxc = maxc >= cle ? maxc:cle;
+		}
+		cout << " " << maxc+1 << endl;
+	}
+
+	return 0;
+}
