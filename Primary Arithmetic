@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+
+using namespace std;
+
+bool isCarry (int a, int b,int c){
+	return (a + b + c >= 10 ?true:false);
+}
+
+int main(){
+	int n,m, t1,t2,ca_in=0;
+	bool carry;
+	while(scanf("%d%d", &n, &m) != EOF){
+		if (!(n || m)) break;
+		int count = 0;
+		while(n || m || ca_in){
+			t1 = n % 10;
+			t2 = m % 10;
+			n /= 10;
+			m /= 10;
+			if (isCarry(t1,t2,ca_in)) {
+				count++;
+				ca_in = 1;
+			}
+			else ca_in = 0;
+		}
+		switch(count){
+			case 0:
+			cout << "No carry operation." << endl;
+			break;
+			case 1:
+			cout << "1 carry operation." << endl;
+			break;
+			default:
+			cout << count << " carry operations." << endl;
+		}
+	}
+	return 0;
+}
