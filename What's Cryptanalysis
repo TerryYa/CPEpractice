@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <algorithm>
+#include <utility>
+
+using namespace std;
+
+typedef pair <char,int> P;
+
+bool compare(P a,P b){
+	if (a.second < b.second)	return false;
+	if (a.second > b.second)	return true;
+	if (a.first < b.first)	return true;
+	return false;
+}
+
+int main(){
+	int n;
+	P asi[26];
+	string s;
+	while(scanf("%d", &n)!=EOF){
+		for (int i=0;i<26;i++){
+			asi[i].first = i;
+			asi[i].second = 0;
+		}
+		getchar();
+		while(n--){
+			getline(cin, s);
+			for (int i=0;i<s.length();i++)
+				if (isalpha(s[i])) 
+					asi[toupper(s[i])-'A'].second++;
+		}
+		sort(asi,asi+26,compare);
+		for (int i=0;i<26;i++)
+			if (asi[i].second)	printf("%c %d\n",asi[i].first+'A',asi[i].second);
+	}
+	return 0;
+}
