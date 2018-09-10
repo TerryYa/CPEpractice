@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <algorithm>
+
+using namespace std;
+
+#define swap(a,b) {int t=a;a=b;b=t;}
+
+int main(){
+	string s1,s2;
+	while(getline(cin,s1) && getline(cin,s2)){
+		string same = "\0";
+		for (int i=0;i<s1.length();i++){
+			for (int j=0;j<s2.length();j++){
+				if (s1[i]==s2[j]) same += s1[i];
+			}
+		}
+		sort(same.begin(),same.end());
+		for(int i=0;i<=same.length();i++){
+			if (same[i]==same[i+1]) continue;
+			cout << same[i];
+		}
+		cout << endl;
+	}
+	return 0;
+}
