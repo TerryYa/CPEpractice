@@ -1,0 +1,14 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+
+using namespace std;
+
+int main(){
+	int n;
+	while(scanf("%d",&n)!=EOF && n){
+		 while(n>9) n = n/10 + n%10;
+		 cout << n << endl;
+	}
+	return 0;
+}
