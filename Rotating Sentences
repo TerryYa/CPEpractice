@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
+
+using namespace std;
+
+
+int main(){
+	string s[105];
+	int rlimit = 0 , climit = 0 ;
+	while(getline(cin,s[rlimit])){
+		int len = s[rlimit].length();
+		climit = max(climit,len);
+		rlimit++;
+	}
+	for (int i=0;i<climit;i++){
+		for (int j=rlimit;j>=0;j--){
+			if (s[j].size()>i)	cout << s[j][i];
+			else cout << ' ';
+		}
+		cout << endl;
+	} 
+	return 0;
+}
