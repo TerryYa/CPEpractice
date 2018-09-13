@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
+
+using namespace std;
+
+
+int main(){
+	string s;
+	bool t=false;
+	while(getline(cin,s)){
+		for (int i=0;i<s.size();i++){
+			if (s[i]=='"'){
+				if(t) cout << "''";
+				else cout << "``";
+				t ^= true;
+			}
+			else cout << s[i];
+		}
+		cout << endl;
+	}
+	return 0;
+}
