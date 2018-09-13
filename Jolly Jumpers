@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
+
+using namespace std;
+
+bool isJolly(int n,int a[]){
+	int  check[n] = {0};
+	for (int i=0;i<n-1;i++){
+		int diff = abs(a[i]-a[i+1]);
+		if (diff>=n) return false;
+		check[diff]++;
+		if (check[0]) return false;
+		if (check[i]>1) return false;
+	}
+	return true;
+}
+
+int main(){
+	int n;
+	while(scanf("%d",&n) != EOF){
+		int a[n];
+		for (int i=0;i<n;i++)	cin >> a[i];
+		if(isJolly(n,a)) cout << "Jolly" << endl;
+		else cout << "Not jolly" << endl;
+	}
+	return 0;
+}
