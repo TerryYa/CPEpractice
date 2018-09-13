@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
+
+using namespace std;
+
+string week[7] = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+int day[13] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+int first_day=5;
+
+int main(){
+	int n;
+	while(scanf("%d",&n) != EOF){
+		while(n--){
+			int m,d;
+			cin >> m >> d;
+			d += first_day;
+			for (int i=1;i<m;i++)	d = d + day[i] % 7;
+			if (d>7) d %= 7;
+			cout << week[d] << endl;
+		}
+	}
+	return 0;
+}
