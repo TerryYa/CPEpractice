@@ -5,6 +5,7 @@
 
 using namespace std;
 
+/* check by 54321012345 whether is symmetric*/
 
 int main(){			
 	int n;
