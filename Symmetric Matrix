@@ -5,9 +5,7 @@
 
 using namespace std;
 
-/* check by 54321012345 whether is symmetric*/
-
-int main(){			
+int main(){			/* check by 54321012345 whether is symmetric*/
 	int n;
 	while(scanf("%d",&n) !=EOF){
 		int no=0;
