@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+
+using namespace std;
+
+
+int main(){			
+	int n;
+	while(scanf("%d",&n) !=EOF){
+		int no=0;
+		while(++no<=n){
+			int first,last,sum=0;
+			cin >> first >> last;
+			if (!(first % 2)) first++;
+			for (int i=first ; i<=last ; i += 2){
+				sum += i;
+			}
+			printf("Case %d: %d\n",no,sum);
+		}
+	}
+	return 0;
+}
