@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <cctype>
+
+using namespace std;
+
+
+int main(){			
+	int n;
+	while(scanf("%d",&n) !=EOF){
+		int no=0;
+		while(++no<=n){
+			bool sym=true;
+			char c = getchar();
+			while(!isdigit(c)) c=getchar();
+			int N = c - '0';
+			int a[N*N];
+			for (int i=0;i<N*N;i++)	cin >> a[i];
+			for (int i=0,j=N*N-1;i<=N*N/2 && sym;i++,j--) if (a[i]!=a[j]) sym = false;
+			sym? printf("Test #%d: symmetric.\n",no) : printf("Test #%d:  Non-symmetric.\n",no);
+		}
+	}
+	return 0;
+}
