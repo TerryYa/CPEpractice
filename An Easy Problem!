@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cstdio>
+#include <cctype>
+
+using namespace std;
+
+char s[128];
+
+int c2i(char c){
+	if (isdigit(c)) return (c-'0');
+	if (isupper(c)) return (c-'A')+10;
+	if (islower(c)) return (c-'a')+36;
+	return -1;
+}
+
+int CanDiv(char *s,int base,int carry){
+	if (*s == '\0') return (carry == 0);
+	if (c2i(*s) < 0) return CanDiv(s+1,base,0);
+	if (c2i(*s) >= base) return 0;
+	return CanDiv(s+1,base,(carry*base+c2i(*s)%(base-1)));
+}
+
+void run(int base){
+	if (base > 62) puts("such number is impossible!");
+	else if (CanDiv(s,base,0)) cout << base;
+	else run(base+1);
+}
+
+int main() {
+	while(gets(s)) {
+		run(2);
+		cout << endl;
+	}
+    return 0;
+}
