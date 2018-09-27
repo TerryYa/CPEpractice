@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int n,f[39],k;
+	f[0]=1;
+	f[1]=2;
+	for (k=2;k<39;k++) f[k]=f[k-1]+f[k-2];
+	while(cin >> n){
+		while(n--){
+			int m,i=0;
+			cin >> m;
+			cout << m << " = ";
+			while(f[i]<=m)	i++;
+			int size=i,fib[size];
+			for (int j=0;j<size;j++) fib[j] = 0;
+			for (int j=0;j<size;j++){
+				i--;
+				if (m-f[i]>=0){
+					m -= f[i];
+					fib[j] = 1;
+				}
+			}
+			for (int j=0;j<size;j++) cout << fib[j];
+			cout << " (fib)" << endl;
+		}
+	}
+    return 0;
+}
