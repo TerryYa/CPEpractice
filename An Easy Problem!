@@ -1,35 +1,30 @@
 #include <iostream>
-#include <cstdio>
-#include <cctype>
-
 using namespace std;
-
-char s[128];
-
-int c2i(char c){
-	if (isdigit(c)) return (c-'0');
-	if (isupper(c)) return (c-'A')+10;
-	if (islower(c)) return (c-'a')+36;
-	return -1;
-}
-
-int CanDiv(char *s,int base,int carry){
-	if (*s == '\0') return (carry == 0);
-	if (c2i(*s) < 0) return CanDiv(s+1,base,0);
-	if (c2i(*s) >= base) return 0;
-	return CanDiv(s+1,base,(carry*base+c2i(*s)%(base-1)));
-}
-
-void run(int base){
-	if (base > 62) puts("such number is impossible!");
-	else if (CanDiv(s,base,0)) cout << base;
-	else run(base+1);
-}
-
-int main() {
-	while(gets(s)) {
-		run(2);
-		cout << endl;
-	}
+int main()
+{
+    string str;
+    while(getline(cin,str))
+    {
+        int sum=0;
+        int Max=1;
+        for(int i=0;i<str.size();i++)
+        {
+            int R=0;
+            if(isdigit(str[i])) R=str[i]-48;
+            else if(isupper(str[i])) R=str[i]-55;//'A'-10
+            else if(islower(str[i])) R=str[i]-61;//'a'-36
+            sum+=R;
+            if(R>Max) Max=R;
+        }
+        for(int i=Max;i<=62;i++)
+        {
+            if(sum%i==0)
+            {
+                cout<<i+1<<endl;//所求N=i+1
+                break;
+            }
+            else if(i==62) cout<<"such number is impossible!"<<endl;
+        }
+    }
     return 0;
 }
