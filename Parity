@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int  cal_mod2(int x){
+	if(x/2 == 0){
+		if(x%2) cout << 1;
+		return x%2;
+	}
+	int mod = cal_mod2(x/2) + x%2;
+	cout << x%2 ;
+	return mod;	
+}
+
+int main(){
+    int x;
+	while(cin >> x){
+		if (x==0) break;
+		cout << "The parity of ";
+		int mod = cal_mod2(x);
+		cout << " is " << mod << " (mod 2)." << endl;
+	}
+    return 0;
+}Parity
