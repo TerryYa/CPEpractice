@@ -1,0 +1,36 @@
+#include <iostream>
+
+using namespace std;
+
+int money[37]={0};
+
+void get_min (int x){
+	int sum[37]={0};
+	for (int i=2;i<37;i++){
+		int temp=x;
+		for (; temp; temp /= i)
+			sum[i] += money[temp % i]; 
+	}
+	int m=1e9;
+	for (int i=2;i<37;i++) m = min(m,sum[i]);
+	for (int i=2;i<37;i++) if(sum[i]==m) cout << " " << i;
+}
+
+int main(int argc, char const *argv[]){
+    int n,no=0;
+	while(cin >> n){
+		while(++no<=n){
+			cout << "Case " << no << ":" << endl;
+			for(int i=0;i<36;i++) cin >> money[i];
+			int m,k;
+			cin >> m;
+			while(m--){
+				cin >> k;
+				cout << "Cheapest base(s) for number " << k << ":";
+				get_min(k);
+				cout << endl;
+			}
+		}
+	}
+    return 0;
+}
