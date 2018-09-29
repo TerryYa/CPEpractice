@@ -1,0 +1,32 @@
+#include <iostream>
+
+using namespace std;
+
+int s2i(string str){
+	int n=0;
+	for (int i=0;i<str.size();i++)
+		n = str[i]-'0'+n*2;
+	return n;
+}
+
+int gcd(int a,int b){
+	return (a%b)?gcd(b,a%b):b;
+}
+
+int main(){
+	int n,no=0;
+	while(cin >> n){
+		while(++no<=n){
+			string s1,s2;
+			int n1,n2,flag=0;
+			cin >> s1 >> s2;
+			n1 = s2i(s1);
+			n2 = s2i(s2);
+			cout << "Pair #"  << no << ": ";
+			if(gcd(n1,n2)!=1) cout << "All you need is love!";
+			else cout << "Love is not all you need!";
+			cout << endl;
+		}
+	}
+    return 0;
+}
