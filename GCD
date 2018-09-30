@@ -3,8 +3,7 @@
 using namespace std;
 
 int gcd(int a,int b){
-	if(!b)return a;
-	else return gcd(b,a%b);
+	return (a%b)?gcd(b,a%b):b;
 }
 
 int sigma(int n){
@@ -17,8 +16,8 @@ int sigma(int n){
 }
 
 int main(){
-	int n;
-	while((cin >> n) && (n != 0)){
+	int n,m;
+	while((cin >> n ) && (n != 0)){
 		cout << sigma(n) << endl;
 	}
     return 0;
