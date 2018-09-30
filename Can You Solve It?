@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+int main(){
+	int n,no=0;
+	while(cin >> n){
+		while(++no<=n){
+			int x1,x2,y1,y2,cnt=0;
+			cin >> x1 >> y1 >> x2 >> y2;
+			for (int i=0;i<(x1+y1);i++)	cnt = cnt-i-1;
+			cnt = cnt-x1-1;
+			for (int i=0;i<(x2+y2);i++) cnt = cnt+i+1;
+			cnt = cnt+x2+1;
+			cout << "Case " << no << ": " << cnt << endl;
+		}	
+	}
+    return 0;
+}		
+
+
